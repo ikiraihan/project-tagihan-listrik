@@ -5,6 +5,8 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Pelanggan;
+use App\Models\Tagihan;
+use App\Models\Tahun;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +17,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {   
         Pelanggan::factory(1000)->create();
+        Tagihan::factory(100)->create();
+        $this->call(TahunSeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

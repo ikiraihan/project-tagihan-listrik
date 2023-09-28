@@ -53,14 +53,14 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="/pelanggan">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Pelanggan</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="/tagihan/tahun">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tagihan</span></a>
             </li>
