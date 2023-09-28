@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Pelanggan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PelangganController extends Controller
 {
@@ -32,7 +31,7 @@ class PelangganController extends Controller
     {   
         
         $validatedData = $request->validate([
-            'id_pelanggan'  => 'required',
+            'id_pelanggan'  => 'required|unique:pelanggan',
             'nama'  => 'required',
             'alamat'  => 'required',
             'daya'  => 'required',
