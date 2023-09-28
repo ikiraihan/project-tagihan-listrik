@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('id_pelanggan');
             $table->string('bulan');
             $table->string('tahun');
-            $table->string('daya');
+            $table->string('KWH');
             $table->string('kelas_tarif');
             $table->string('total_tagihan');
             $table->timestamps();
