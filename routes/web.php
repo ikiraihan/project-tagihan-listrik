@@ -28,8 +28,10 @@ Route::get('/pelanggan/edit/{id}', [PelangganController::class,'edit']);
 Route::post('/pelanggan/update/{id}', [PelangganController::class,'update']);
 Route::get('/pelanggan/destroy/{id}', [PelangganController::class,'destroy']);
 
-//Route::get('/tagihan', [TagihanController::class, 'index']);
-Route::get('/tagihan/tahun', [TagihanController::class, 'viewTahun']);
+// Route::get('/tagihan', [TagihanController::class, 'index']);
+Route::get('/tagihan', [TagihanController::class, 'viewTahun']);
+Route::get('/tagihan/{id}', [TagihanController::class, 'viewBulan']);
+Route::get('/tagihan/{id}/{bulan}', [TagihanController::class, 'viewDataTagihan']);
 Route::get('/tagihan/create', [TagihanController::class, 'create']);
 Route::post('/tagihan/store', [TagihanController::class, 'store']);
 Route::get('/tagihan/edit/{id}', [TagihanController::class,'edit']);

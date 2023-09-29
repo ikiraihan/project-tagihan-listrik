@@ -17,7 +17,7 @@
                             <h1 class="h3 mt-2 mb-2 text-gray-800">Edit Pelanggan</h1>
                         </div>
 						<div class="card-body">
-                            <form action="/pelanggan/store" method="post" enctype="multipart/form-data">
+                            <form action="/pelanggan/update/{{ $pelanggan->id }}" method="post" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="id_pelanggan">ID Pelanggan</label>

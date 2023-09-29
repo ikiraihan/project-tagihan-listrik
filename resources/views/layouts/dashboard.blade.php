@@ -60,7 +60,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="/tagihan/tahun">
+                <a class="nav-link" href="/tagihan">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tagihan</span></a>
             </li>
