@@ -21,19 +21,28 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/pelanggan', [PelangganController::class, 'index']);
-Route::get('/pelanggan/create', [PelangganController::class, 'create']);
-Route::post('/pelanggan/store', [PelangganController::class, 'store']);
-Route::get('/pelanggan/edit/{id}', [PelangganController::class,'edit']);
-Route::post('/pelanggan/update/{id}', [PelangganController::class,'update']);
-Route::get('/pelanggan/destroy/{id}', [PelangganController::class,'destroy']);
+// Route::get('/signup', [AuthController::class,'viewSignup'])->name('signUp');
+// Route::post('/signup', [AuthController::class,'signUp']);
+
+Route::post('/login', [AuthController::class,'login']);
+Route::get('/', [AuthController::class,'viewLogin'])->name('login');
+
+Route::post('/logout', [AuthController::class, 'logout']);
+
+Route::get('/pelanggan', [PelangganController::class, 'index'])->middleware(['auth']);
+Route::get('/pelanggan/create', [PelangganController::class, 'create'])->middleware(['auth']);
+Route::post('/pelanggan/store', [PelangganController::class, 'store'])->middleware(['auth']);
+Route::get('/pelanggan/edit/{id}', [PelangganController::class,'edit'])->middleware(['auth']);
+Route::post('/pelanggan/update/{id}', [PelangganController::class,'update'])->middleware(['auth']);
+Route::get('/pelanggan/destroy/{id}', [PelangganController::class,'destroy'])->middleware(['auth']);
 
 // Route::get('/tagihan', [TagihanController::class, 'index']);
-Route::get('/tagihan', [TagihanController::class, 'viewTahun']);
-Route::get('/tagihan/{id}', [TagihanController::class, 'viewBulan']);
-Route::get('/tagihan/{id}/{bulan}', [TagihanController::class, 'viewDataTagihan']);
-Route::get('/tagihan/create', [TagihanController::class, 'create']);
-Route::post('/tagihan/store', [TagihanController::class, 'store']);
-Route::get('/tagihan/edit/{id}', [TagihanController::class,'edit']);
-Route::post('/tagihan/update/{id}', [TagihanController::class,'update']);
-Route::get('/tagihan/destroy/{id}', [TagihanController::class,'destroy']);
+Route::get('/tagihan', [TagihanController::class, 'viewTahun'])->middleware(['auth']);
+Route::get('/tagihan/{id}', [TagihanController::class, 'viewBulan'])->middleware(['auth']);
+Route::get('/tagihan/{id}/{bulan}', [TagihanController::class, 'viewDataTagihan'])->middleware(['auth']);
+
+Route::get('/tagihan/create', [TagihanController::class, 'create'])->middleware(['auth']);
+Route::post('/tagihan/store', [TagihanController::class, 'store'])->middleware(['auth']);
+Route::get('/tagihan/edit/{id}', [TagihanController::class,'edit'])->middleware(['auth']);
+Route::post('/tagihan/update/{id}', [TagihanController::class,'update'])->middleware(['auth']);
+Route::get('/tagihan/destroy/{id}', [TagihanController::class,'destroy'])->middleware(['auth']);

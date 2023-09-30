@@ -16,9 +16,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {   
-        Pelanggan::factory(1000)->create();
-        Tagihan::factory(300)->create();
-        $this->call(TahunSeeder::class);
+        // Pelanggan::factory(1000)->create();
+        // Tagihan::factory(300)->create();
+        // $this->call(TahunSeeder::class);
+        $this->call(UserSeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
