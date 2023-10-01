@@ -37,7 +37,7 @@
                                     <tbody>
                                         @foreach ($tahun as $dataTahun => $p)
                                         <tr>
-                                            <td>{{ $p -> nama }}</td>   
+                                            <td>{{ $p -> tahun }}</td>   
                                             <td>
                                                 <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/tagihan/{{$p->id}}">
                                                     <span class="svg-icon svg-icon-3">

@@ -42,10 +42,10 @@
                                         @foreach ($pelanggan as $dataPelanggan => $p)
                                         <tr>
                                             <td class="text-wrap text-center">{{ $dataPelanggan + 1 }}</td>
-                                            <td>{{ $p -> id_pelanggan }}</td>
-                                            <td>{{ $p -> nama }}</td>
-                                            <td>{{ $p -> alamat}}</td>
-                                            <td>{{ $p -> daya }}</td>      
+                                            <td>{{ $p -> id_pelanggan ?? '-'}}</td>
+                                            <td>{{ $p -> nama ?? '-' }}</td>
+                                            <td>{{ $p -> alamat ?? '-' }}</td>
+                                            <td>{{ $p -> daya ?? '-' }}</td>      
                                             <td>
                                                 <a class="btn btn-icon btn-success btn-sm btn-active-light-primary w-30px h-30px me-3" href="/">
                                                 Detail

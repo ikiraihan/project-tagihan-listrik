@@ -15,19 +15,19 @@ class TahunSeeder extends Seeder
     {
         $tahun = [
             [
-           'nama' => '2019',
+           'tahun' => '2019',
             ],
             [
-           'nama' => '2020',
+           'tahun' => '2020',
             ],
             [
-           'nama' => '2021',
+           'tahun' => '2021',
             ],
             [
-           'nama' => "2022",
+           'tahun' => "2022",
             ],
             [
-            'nama' => "2023",
+            'tahun' => "2023",
             ]
         ];
 

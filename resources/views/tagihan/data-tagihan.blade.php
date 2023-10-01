@@ -51,13 +51,13 @@
                                         @foreach ($tagihan as $dataTagihan => $t)
                                         <tr>
                                             <td class="text-wrap text-center">{{ $dataTagihan + 1 }}</td>
-                                            <td>{{ $t -> pelanggan -> id_pelanggan }}</td>
-                                            <td>{{ $t -> pelanggan -> nama }}</td>
-                                            <td>{{ $t -> tahun -> nama }}</td>
-                                            <td>{{ $t -> bulan}}</td>
-                                            <td>{{ $t -> KWH }}</td> 
-                                            <td>{{ $t -> kelas_tarif }}</td> 
-                                            <td>{{ $t -> total_tagihan }}</td>      
+                                            <td>{{ $t -> pelanggan -> id_pelanggan ?? '-' }}</td>
+                                            <td>{{ $t -> pelanggan -> nama ?? '-' }}</td>
+                                            <td>{{ $t -> tahun -> tahun ?? '-' }}</td>
+                                            <td>{{ $t -> bulan ?? '-'}}</td>
+                                            <td>{{ $t -> KWH ?? '-' }}</td> 
+                                            <td>{{ $t -> kelas_tarif ?? '-' }}</td> 
+                                            <td>{{ $t -> total_tagihan ?? '-' }}</td>      
                                             <td>
                                                 <a class="btn btn-icon btn-success btn-sm btn-active-light-primary w-30px h-30px me-3" href="/">
                                                 Detail
