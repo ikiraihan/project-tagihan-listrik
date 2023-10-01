@@ -14,7 +14,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Bulan</th>
@@ -25,7 +25,7 @@
                                         <tr>
                                             <td>Januari</td>   
                                             <td>
-                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/tagihan/{{$tahun->id}}/{{'Januari'}}">
+                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/{{$tahun->id}}-tagihan-{{'Januari'}}">
                                                     <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
@@ -37,7 +37,7 @@
                                         <tr>
                                             <td>Februari</td>   
                                             <td>
-                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/tagihan/{{$tahun->id}}/{{'Februari'}}">
+                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/{{$tahun->id}}-tagihan-{{'Februari'}}">
                                                     <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
@@ -49,7 +49,7 @@
                                         <tr>
                                             <td>Maret</td>   
                                             <td>
-                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/tagihan/{{$tahun->id}}/{{'Maret'}}">
+                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/{{$tahun->id}}-tagihan-{{'Maret'}}">
                                                     <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
@@ -61,7 +61,7 @@
                                         <tr>
                                             <td>April</td>   
                                             <td>
-                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/tagihan/{{$tahun->id}}/{{'April'}}">
+                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/{{$tahun->id}}-tagihan-{{'April'}}">
                                                     <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
@@ -73,7 +73,7 @@
                                         <tr>
                                             <td>Mei</td>   
                                             <td>
-                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/tagihan/{{$tahun->id}}/{{'Mei'}}">
+                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/{{$tahun->id}}-tagihan-{{'Mei'}}">
                                                     <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
@@ -85,7 +85,7 @@
                                         <tr>
                                             <td>Juni</td>   
                                             <td>
-                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/tagihan/{{$tahun->id}}/{{'Juni'}}">
+                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/{{$tahun->id}}-tagihan-{{'Juni'}}">
                                                     <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
@@ -97,7 +97,7 @@
                                         <tr>
                                             <td>Juli</td>   
                                             <td>
-                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/tagihan/{{$tahun->id}}/{{'Juli'}}">
+                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/{{$tahun->id}}-tagihan-{{'Juli'}}">
                                                     <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
@@ -109,7 +109,7 @@
                                         <tr>
                                             <td>Agustus</td>   
                                             <td>
-                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/tagihan/{{$tahun->id}}/{{'Agustus'}}">
+                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/{{$tahun->id}}-tagihan-{{'Agustus'}}">
                                                     <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
@@ -121,7 +121,7 @@
                                         <tr>
                                             <td>September</td>   
                                             <td>
-                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/tagihan/{{$tahun->id}}/{{'September'}}">
+                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/{{$tahun->id}}-tagihan-{{'September'}}">
                                                     <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
@@ -133,7 +133,7 @@
                                         <tr>
                                             <td>Oktober</td>   
                                             <td>
-                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/tagihan/{{$tahun->id}}/{{'Oktober'}}">
+                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/{{$tahun->id}}-tagihan-{{'Oktober'}}">
                                                     <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
@@ -145,7 +145,7 @@
                                         <tr>
                                             <td>November</td>   
                                             <td>
-                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/tagihan/{{$tahun->id}}/{{'November'}}">
+                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/{{$tahun->id}}-tagihan-{{'November'}}">
                                                     <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
@@ -157,7 +157,7 @@
                                         <tr>
                                             <td>Desember</td>   
                                             <td>
-                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/tagihan/{{$tahun->id}}/{{'Desember'}}">
+                                                <a class="btn btn-icon btn-primary btn-active-light-primary w-30px h-30px me-3" href="/{{$tahun->id}}-tagihan-{{'Desember'}}">
                                                     <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>

@@ -113,6 +113,6 @@ class TagihanController extends Controller
 
         $request->session()->flash('success','Data tagihan Berhasil ditambahkan!');
 
-        return redirect("/tagihan/$tahun->id/$bulan");
+        return redirect("/$tahun->id-tagihan-$bulan");
     }
 }
