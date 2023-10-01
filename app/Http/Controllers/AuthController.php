@@ -14,9 +14,9 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function viewSignup()
+    public function viewRegister()
     {
-        return view('signup');
+        return view('auth.register');
     }
 
     public function login(Request $request)
@@ -42,11 +42,12 @@ class AuthController extends Controller
         }
     }
     
-    public function signUp(Request $request)
+    public function register(Request $request)
     {
         $validatedData = $request->validate([
             'name'          => 'required|min:3|max:50',
-            'email'         => 'required|email:dns|unique:users',
+            'email'         => 'required|unique:users',
+            'username'      => 'required|unique:users',
             'password'      => 'required||min:8|max:32'
         ]);
 
@@ -54,9 +55,9 @@ class AuthController extends Controller
     
         User::create($validatedData);
 
-        Session::flash('success', 'Register Berhasil. Akun Anda sudah Aktif silahkan Login menggunakan username dan password.');
+        Session::flash('success', 'Register Berhasil. Akun Anda sudah Aktif silahkan Login');
 
-        return redirect('/signup');
+        return redirect('/');
     }
 
     public function logout()

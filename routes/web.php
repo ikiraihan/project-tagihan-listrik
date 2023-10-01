@@ -21,8 +21,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/signup', [AuthController::class,'viewSignup'])->name('signUp');
-// Route::post('/signup', [AuthController::class,'signUp']);
+Route::get('/register', [AuthController::class,'viewRegister']);
+Route::post('/register', [AuthController::class,'register']);
 
 Route::post('/login', [AuthController::class,'login']);
 Route::get('/', [AuthController::class,'viewLogin'])->name('login');

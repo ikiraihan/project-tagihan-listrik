@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -77,7 +77,7 @@
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div> -->
                                     <div class="text-center">
-                                        <a class="small" href="/signup">Create an Account!</a>
+                                        <a class="small" href="/register">Create an Account!</a>
                                     </div>
                                 </div>
                             </div>
