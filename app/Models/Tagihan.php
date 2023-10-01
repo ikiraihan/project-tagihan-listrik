@@ -14,7 +14,7 @@ class Tagihan extends Model
         'id_pelanggan',
         'id_tahun',
         'bulan',
-        'KWH',
+        'kwh',
         'kelas_tarif',
         'total_tagihan',
     ];
