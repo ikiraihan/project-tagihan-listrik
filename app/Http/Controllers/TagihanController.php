@@ -111,8 +111,54 @@ class TagihanController extends Controller
         Tagihan::create($validatedData);
         // dd($validatedData);
 
-        $request->session()->flash('success','Data tagihan Berhasil ditambahkan!');
+        $request->session()->flash('success','Data Tagihan Berhasil ditambahkan!');
 
         return redirect("/$tahun->id-tagihan-$bulan");
+    }
+
+    public function edit($id,$bulan,$tagihan)
+    {
+        $tahun = Tahun::findOrFail($id);
+        $pelanggan = Pelanggan::all();
+        // $bulan = Bulan::findOrFail($id);
+        // $tagihan = Tagihan::with(['pelanggan','tahun'])
+        //                 ->where('id_tahun', $id)
+        //                 ->where('bulan', $bulan)
+        //                 ->get();
+        $tagihan = Tagihan::findOrFail($tagihan);
+
+        return view('tagihan.edit', [
+            'title' => 'Edit tagihan',
+            'tagihan' => $tagihan,
+            'pelanggan' => $pelanggan,
+            'tahun' => $tahun,
+            'bulan' => $bulan,
+        ]);
+    }
+
+    public function update(Request $request,$id,$bulan,$tagihan)
+    {
+        $tahun = Tahun::findOrFail($id);
+
+        Tagihan::where('id', $tagihan)->update([
+            'id_pelanggan'  => $request->id_pelanggan,
+            'id_tahun'  => $request->id_tahun,
+            'bulan'  => $request->bulan,
+            'kwh'  => $request->kwh,
+            'kelas_tarif'  => $request->kelas_tarif,
+            'total_tagihan'  => $request->total_tagihan,
+        ]);
+
+        $request->session()->flash('success', 'Data Tagihan Berhasil diupdate!');
+
+        return redirect("/$tahun->id-tagihan-$bulan");
+    }
+
+    public function destroy($id,$bulan,$tagihan)
+    {
+        Tagihan::destroy($tagihan);
+		
+        return redirect("/$id-tagihan-$bulan")->with('successDelete', 'Data Tagihan Berhasil dihapus!');
+        
     }
 }

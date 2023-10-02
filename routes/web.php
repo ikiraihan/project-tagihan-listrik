@@ -43,6 +43,6 @@ Route::get('/{id}-tagihan-{bulan}', [TagihanController::class, 'viewDataTagihan'
 
 Route::get('/tagihan/{id}/{bulan}/create', [TagihanController::class, 'create'])->middleware(['auth'])->name('data.tagihan');
 Route::post('/tagihan/{id}/{bulan}/store', [TagihanController::class, 'store'])->middleware(['auth']);
-Route::get('/tagihan/edit/{id}', [TagihanController::class,'edit'])->middleware(['auth']);
-Route::post('/tagihan/update/{id}', [TagihanController::class,'update'])->middleware(['auth']);
-Route::get('/tagihan/destroy/{id}', [TagihanController::class,'destroy'])->middleware(['auth']);
+Route::get('/tagihan/{id}/{bulan}/edit/{tagihan}', [TagihanController::class,'edit'])->middleware(['auth']);
+Route::post('/tagihan/{id}/{bulan}/update/{tagihan}', [TagihanController::class,'update'])->middleware(['auth']);
+Route::get('/tagihan/{id}/{bulan}/destroy/{tagihan}', [TagihanController::class,'destroy'])->middleware(['auth']);

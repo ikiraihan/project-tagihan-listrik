@@ -22,7 +22,7 @@
                             <h1 class="h3 mt-2 mb-2 text-gray-800">Tambah Tagihan</h1>
                         </div>
 						<div class="card-body">
-                            <form action="/tagihan/{{$tahun->id}}/{{$bulan}}/store" method="post">
+                            <form action="/tagihan/{{$tahun->id}}/{{$bulan}}/update/{{$tagihan->id}}" method="post">
                                 {{ csrf_field() }}
                                 <!-- <div class="form-group">
                                     <label for="id_tahun">Tahun</label>
@@ -40,8 +40,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Pilih Pelanggan</label><br>
-                                    <select class="selectpicker" id="id_pelanggan" name="id_pelanggan" data-live-search="true" showSubtext="true" data-width="100%">
-                                        <option value="">Pilih ID dan Nama Pelanggan</option>
+                                    <select class="selectpicker" id="id_pelanggan" name="id_pelanggan"  data-live-search="true" showSubtext="true" data-width="100%">
+                                        <option value="{{ $tagihan->id_pelanggan }}">{{ $tagihan-> pelanggan -> id_pelanggan }} / {{ $tagihan -> pelanggan -> nama }}</option>
                                         @foreach ($pelanggan as $p)
                                         <option value="{{ $p->id }}"> {{ $p->id_pelanggan }} / {{ $p->nama }}</option>
                                         @endforeach
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="kwh">KWH</label>
-                                    <input type="number" class="form-control" id="kwh" name="kwh" placeholder="Masukkan Jumlah KWH" required>
+                                    <input type="number" class="form-control" id="kwh" name="kwh" value="{{ $tagihan->KWH }}" placeholder="Masukkan Jumlah KWH" required>
                                     @error('kwh')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="kelas_tarif">Kelas Tarif</label>
-                                    <input type="text" class="form-control" id="kelas_tarif" name="kelas_tarif" placeholder="Masukkan Kelas Tarif" required>
+                                    <input type="text" class="form-control" id="kelas_tarif" name="kelas_tarif" value="{{ $tagihan->kelas_tarif }}"  placeholder="Masukkan Kelas Tarif" required>
                                     @error('kelas_tarif')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="total_tagihan">Total Tagihan</label>
-                                    <input type="number" class="form-control" id="total_tagihan" name="total_tagihan" placeholder="Masukkan Total Tagihan" required>
+                                    <input type="number" class="form-control" id="total_tagihan" name="total_tagihan" value="{{ $tagihan->total_tagihan }}"  placeholder="Masukkan Total Tagihan" required>
                                     @error('total_tagihan')
                                         <div class="invalid-feedback">
                                             {{ $message }}

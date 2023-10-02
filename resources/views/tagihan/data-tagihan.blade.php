@@ -62,10 +62,10 @@
                                                 <a class="btn btn-icon btn-success btn-sm btn-active-light-primary w-30px h-30px me-3" href="/">
                                                 Detail
                                                 </a>
-												<a class="btn btn-icon btn-warning btn-sm btn-active-light-primary w-30px h-30px me-3" href="/pelanggan/edit/{{ $t->id }}">
+												<a class="btn btn-icon btn-warning btn-sm btn-active-light-primary w-30px h-30px me-3" href="/tagihan/{{$tahun->id}}/{{$bulan}}/edit/{{$t->id}}">
                                                 Edit
                                                 </a>
-												<a class="btn btn-icon btn-danger btn-sm btn-active-light-primary w-30px h-30px" href="/pelanggan/destroy/{{ $t->id }}" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')">
+												<a class="btn btn-icon btn-danger btn-sm btn-active-light-primary w-30px h-30px" href="/tagihan/{{$tahun->id}}/{{$bulan}}/destroy/{{$t->id}}" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')">
                                                 Hapus
                                                 </a>
 											</td>                               
