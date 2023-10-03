@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PelangganExport;
 use App\Models\Pelanggan;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class PelangganController extends Controller
@@ -80,4 +82,9 @@ class PelangganController extends Controller
         return redirect('/pelanggan')->with('successDelete', 'Data Pelanggan Berhasil dihapus!');
         
     }
+
+    public function export_excel()
+	{   
+		return Excel::download(new PelangganExport, 'pelanggan.xlsx');
+	}
 }

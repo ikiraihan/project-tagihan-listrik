@@ -35,11 +35,13 @@ Route::post('/pelanggan/store', [PelangganController::class, 'store'])->middlewa
 Route::get('/pelanggan/edit/{id}', [PelangganController::class,'edit'])->middleware(['auth']);
 Route::post('/pelanggan/update/{id}', [PelangganController::class,'update'])->middleware(['auth']);
 Route::get('/pelanggan/destroy/{id}', [PelangganController::class,'destroy'])->middleware(['auth']);
+Route::get('/pelanggan/export', [PelangganController::class,'export_excel'])->middleware(['auth']);
 
 // Route::get('/tagihan', [TagihanController::class, 'index']);
 Route::get('/tagihan', [TagihanController::class, 'viewTahun'])->middleware(['auth']);
 Route::get('/{id}-tagihan', [TagihanController::class, 'viewBulan'])->middleware(['auth']);
 Route::get('/{id}-tagihan-{bulan}', [TagihanController::class, 'viewDataTagihan'])->middleware(['auth']);
+Route::get('/{id}-tagihan-{bulan}/export', [TagihanController::class, 'export_excel'])->middleware(['auth']);
 
 Route::get('/tagihan/{id}/{bulan}/create', [TagihanController::class, 'create'])->middleware(['auth'])->name('data.tagihan');
 Route::post('/tagihan/{id}/{bulan}/store', [TagihanController::class, 'store'])->middleware(['auth']);

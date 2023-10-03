@@ -6,6 +6,8 @@ use App\Models\Bulan;
 use App\Models\Pelanggan;
 use App\Models\Tagihan;
 use App\Models\Tahun;
+use App\Exports\TagihanExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class TagihanController extends Controller
@@ -161,4 +163,14 @@ class TagihanController extends Controller
         return redirect("/$id-tagihan-$bulan")->with('successDelete', 'Data Tagihan Berhasil dihapus!');
         
     }
+
+    public function export_excel($id,$bulan)
+	{   
+        $tahun = Tahun::findOrFail($id);
+        // $tagihan = Tagihan::with(['pelanggan','tahun'])                        
+        // ->where('id_tahun', $id)
+        // ->where('bulan', $bulan)
+        // ->get();
+		return Excel::download(new TagihanExport($id,$bulan), 'tagihan-'.$bulan.'-'.$tahun->tahun.'.xlsx');
+	}
 }
