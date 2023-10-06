@@ -81,21 +81,52 @@ class PelangganController extends Controller
     }
 
     public function detail($id,$tahun)
-    {
+    {   
+
         $pelanggan = Pelanggan::findOrFail($id);
         $getTahun = Tahun::all();
+
+        $tagihanJanuari = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Januari')->value('total_tagihan');
+        $tagihanFebruari = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Februari')->value('total_tagihan');
+        $tagihanMaret = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Maret')->value('total_tagihan');
+        $tagihanApril = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','April')->value('total_tagihan');
+        $tagihanMei = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Mei')->value('total_tagihan');
+        $tagihanJuni = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Juni')->value('total_tagihan');
+        $tagihanJuli = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Juli')->value('total_tagihan');
+        $tagihanAgustus = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Agustus')->value('total_tagihan');
+        $tagihanSeptember = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','September')->value('total_tagihan');
+        $tagihanOktober = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Oktober')->value('total_tagihan');
+        $tagihanNovember = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','November')->value('total_tagihan');
+        $tagihanDesember = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Desember')->value('total_tagihan');
+
+        //dd($tagihanJanuari);
+
+        //BELOM DIKASI HANDLING KALO MISAL ADA 2 KOLOM BULAN DI TAHUN YANG SAMA 
+
         $tagihan = Tagihan::with(['pelanggan','tahun'])
         ->where('id_pelanggan',$id)
         ->where('id_tahun',$tahun)
         ->get();
+
         $tahun = Tahun::findOrFail($tahun);
-        // dd($);
         return view('pelanggan.detail', [
             'title' => 'Pelanggan',
             'pelanggan' => $pelanggan,
             'getTahun' => $getTahun,
             'tahun' => $tahun,
-            'tagihan' => $tagihan
+            'tagihan' => $tagihan,
+            'tagihanJanuari' => $tagihanJanuari,
+            'tagihanFebruari' => $tagihanFebruari,
+            'tagihanMaret' => $tagihanMaret,
+            'tagihanApril' => $tagihanApril,
+            'tagihanMei' => $tagihanMei,
+            'tagihanJuni' => $tagihanJuni,
+            'tagihanJuli' => $tagihanJuli,
+            'tagihanAgustus' => $tagihanAgustus,
+            'tagihanSeptember' => $tagihanSeptember,
+            'tagihanOktober' => $tagihanOktober,
+            'tagihanNovember' => $tagihanNovember,
+            'tagihanDesember' => $tagihanDesember,
         ]);
     }
 

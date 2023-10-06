@@ -109,9 +109,61 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <br>
+                            <!-- Basic Card Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-grey-800">Grafik Tagihan Pelanggan Tahun {{$tahun->tahun}}</h6>
+                                </div>
+                                <div class="card-body">
+                                <canvas id="myChart" height="100px"></canvas>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
 
-                </div>
+<script type="text/javascript">
+
+      //var labels =  {{ Js::from($tagihan) }};
+      //var users =  {{ Js::from($pelanggan) }};
+      const januari =  {{ Js::from($tagihanJanuari) }};
+      const februari =  {{ Js::from($tagihanFebruari) }};
+      const maret =  {{ Js::from($tagihanMaret) }};
+      const april =  {{ Js::from($tagihanApril) }};
+      const mei =  {{ Js::from($tagihanMei) }};
+      const juni =  {{ Js::from($tagihanJuni) }};
+      const juli =  {{ Js::from($tagihanJuli) }};
+      const agustus =  {{ Js::from($tagihanAgustus) }};
+      const september =  {{ Js::from($tagihanSeptember) }};
+      const oktober =  {{ Js::from($tagihanOktober) }};
+      const november =  {{ Js::from($tagihanNovember) }};
+      const desember =  {{ Js::from($tagihanDesember) }};
+
+      const data = {
+        labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni','Juli','Agustus','September','Oktober','November','Desember'],
+        datasets: [{
+          label: 'Bulan',
+          data: [januari,februari,maret,april,mei,juni,juli,agustus,september,oktober,november,desember],
+          backgroundColor: 'rgb(255, 99, 132, 0.8)',
+          borderColor: 'rgb(255, 99, 132, 1)',
+          borderWidth: 1.5
+        }]
+      };
+
+      const config = {
+        type: 'bar',
+        data: data,
+        options: {}
+      };
+
+      const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
+</script>
 
 @endsection
