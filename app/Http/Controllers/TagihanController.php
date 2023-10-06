@@ -164,7 +164,7 @@ class TagihanController extends Controller
         
     }
 
-    public function export_excel($id,$bulan)
+    public function exportExcel($id,$bulan)
 	{   
         $tahun = Tahun::findOrFail($id);
         // $tagihan = Tagihan::with(['pelanggan','tahun'])                        

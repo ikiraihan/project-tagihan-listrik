@@ -55,7 +55,7 @@
                                             <td>{{ $p -> alamat ?? '-' }}</td>
                                             <td>{{ $p -> daya ?? '-' }}</td>      
                                             <td>
-                                                <a class="btn btn-icon btn-success btn-sm btn-active-light-primary w-30px h-30px me-3" href="/">
+                                                <a class="btn btn-icon btn-success btn-sm btn-active-light-primary w-30px h-30px me-3" href="/pelanggan-{{ $p->id }}-detail-{{'1'}}">
                                                 Detail
                                                 </a>
 												<a class="btn btn-icon btn-warning btn-sm btn-active-light-primary w-30px h-30px me-3" href="/pelanggan/edit/{{ $p->id }}">
