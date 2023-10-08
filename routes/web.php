@@ -43,6 +43,8 @@ Route::post('/pelanggan-{id}-detail-{tahun}/tagihan/store', [PelangganController
 Route::get('/pelanggan-{id}-detail-{tahun}/tagihan/edit/{tagihan}', [PelangganController::class, 'editTagihan'])->middleware(['auth']);
 Route::post('/pelanggan-{id}-detail-{tahun}/tagihan/update/{tagihan}', [PelangganController::class, 'updateTagihan'])->middleware(['auth']);
 Route::get('/pelanggan-{id}-detail-{tahun}/tagihan/destroy/{tagihan}', [PelangganController::class, 'destroyTagihan'])->middleware(['auth']);
+Route::get('/pelanggan-{id}-detail-{tahun}/tagihan/export', [PelangganController::class, 'exportExcelTagihanPelanggan'])->middleware(['auth']);
+
 
 // Route::get('/tagihan', [TagihanController::class, 'index']);
 Route::get('/tagihan', [TagihanController::class, 'viewTahun'])->middleware(['auth']);
