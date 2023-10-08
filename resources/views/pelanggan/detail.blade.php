@@ -49,12 +49,12 @@
                             <button class="btn btn-primary dropdown-toggle" type="button"
                                 id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
-                                Tahun
+                                Tahun {{ $tahun->tahun }}
                             </button>
                             <div class="dropdown-menu animated--fade-in"
                                 aria-labelledby="dropdownMenuButton">
                                 @foreach ($getTahun as $p)
-                                <a class="dropdown-item" href="/pelanggan-{{ $pelanggan->id }}-detail-{{ $p->id }}">{{ $p->tahun }}</a>
+                                <a class="dropdown-item" href="/pelanggan-{{ $pelanggan->id }}-detail-{{ $p->tahun }}">{{ $p->tahun }}</a>
                                 @endforeach
                             </div>
                             <div>
@@ -91,8 +91,8 @@
                                             <!-- <td>{{ $t -> pelanggan -> id_pelanggan ?? '-' }}</td>
                                             <td>{{ $t -> pelanggan -> nama ?? '-' }}</td> -->
                                             <td>{{ $t -> tahun -> tahun ?? '-' }}</td>
-                                            <td>{{ $t -> bulan ?? '-'}}</td>
-                                            <td>{{ $t -> KWH ?? '-' }}</td> 
+                                            <td>{{ $t -> bulan -> bulan ?? '-'}}</td>
+                                            <td>{{ $t -> kwh ?? '-' }}</td> 
                                             <td>{{ $t -> kelas_tarif ?? '-' }}</td> 
                                             <td>{{ $t -> total_tagihan ?? '-' }}</td>      
                                             <!-- <td>
@@ -129,29 +129,20 @@
 
       //var labels =  {{ Js::from($tagihan) }};
       //var users =  {{ Js::from($pelanggan) }};
-      const januari =  {{ Js::from($tagihanJanuari) }};
-      const februari =  {{ Js::from($tagihanFebruari) }};
-      const maret =  {{ Js::from($tagihanMaret) }};
-      const april =  {{ Js::from($tagihanApril) }};
-      const mei =  {{ Js::from($tagihanMei) }};
-      const juni =  {{ Js::from($tagihanJuni) }};
-      const juli =  {{ Js::from($tagihanJuli) }};
-      const agustus =  {{ Js::from($tagihanAgustus) }};
-      const september =  {{ Js::from($tagihanSeptember) }};
-      const oktober =  {{ Js::from($tagihanOktober) }};
-      const november =  {{ Js::from($tagihanNovember) }};
-      const desember =  {{ Js::from($tagihanDesember) }};
+      const tagihan = {!! json_encode($chartBulan) !!};
 
       const data = {
-        labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni','Juli','Agustus','September','Oktober','November','Desember'],
-        datasets: [{
-          label: 'Tagihan',
-          data: [januari,februari,maret,april,mei,juni,juli,agustus,september,oktober,november,desember],
-          backgroundColor: 'rgb(255, 99, 132, 0.8)',
-          borderColor: 'rgb(255, 99, 132, 1)',
-          fill: false,
-          borderWidth: 1.5
-        }]
+        // labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni','Juli','Agustus','September','Oktober','November','Desember'],
+        datasets: [
+                {
+                    label: 'Tagihan',
+                    data: tagihan,
+                    borderColor: ['rgba(255, 99, 132, 1)'],
+                    backgroundColor: ['rgba(255, 99, 132, 1)'],
+                    fill: false,
+                    pointRadius:7,
+                },
+        ]
       };
 
       const config = {

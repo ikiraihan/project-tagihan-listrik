@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\PelangganExport;
 use App\Exports\TagihanPelangganExport;
+use App\Models\Bulan;
 use App\Models\Pelanggan;
 use App\Models\Tagihan;
 use App\Models\Tahun;
@@ -15,10 +16,12 @@ class PelangganController extends Controller
     public function index(){
 
         $pelanggan = Pelanggan::all();
-
+        $yearNow = date('Y');
+        
         return view('pelanggan.index', [
             'title' => 'Pelanggan',
-            'pelanggan' => $pelanggan
+            'pelanggan' => $pelanggan,
+            'yearNow' => $yearNow,
         ]);
     }
 
@@ -87,52 +90,58 @@ class PelangganController extends Controller
         $pelanggan = Pelanggan::findOrFail($id);
         $getTahun = Tahun::orderBy('tahun')->get();
 
-        $tagihanJanuari = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Januari')->value('total_tagihan');
-        $tagihanFebruari = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Februari')->value('total_tagihan');
-        $tagihanMaret = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Maret')->value('total_tagihan');
-        $tagihanApril = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','April')->value('total_tagihan');
-        $tagihanMei = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Mei')->value('total_tagihan');
-        $tagihanJuni = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Juni')->value('total_tagihan');
-        $tagihanJuli = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Juli')->value('total_tagihan');
-        $tagihanAgustus = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Agustus')->value('total_tagihan');
-        $tagihanSeptember = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','September')->value('total_tagihan');
-        $tagihanOktober = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Oktober')->value('total_tagihan');
-        $tagihanNovember = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','November')->value('total_tagihan');
-        $tagihanDesember = Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun)->where('bulan','Desember')->value('total_tagihan');
+        $tahun = Tahun::where('tahun',$tahun)->first();
+        
+        for ($i = 1; $i <= 12; $i++) {
 
-        //dd($tagihanJanuari);
+            $labelBulan=Bulan::where('id',$i)
+            ->value('bulan');
 
-        //BELOM DIKASI HANDLING KALO MISAL ADA 2 KOLOM BULAN DI TAHUN YANG SAMA 
+            $chartBulan[$labelBulan]=Tagihan::with(['pelanggan','tahun','bulan'])
+            ->where('id_pelanggan',$id)
+            ->where('id_tahun',$tahun->id)
+            ->where('id_bulan', $i)
+            ->value('total_tagihan');
+            
+            if($chartBulan[$labelBulan]==null){
+                $chartBulan[$labelBulan]='0';
+            }
+
+        }
+        //dd($chartBulan);
 
         $tagihan = Tagihan::with(['pelanggan','tahun'])
         ->where('id_pelanggan',$id)
-        ->where('id_tahun',$tahun)
+        ->where('id_tahun',$tahun->id)
+        ->orderByraw('CHAR_LENGTH(id_bulan) ASC')
+        ->orderBy('id_bulan', 'ASC')
         ->get();
 
-        $tahun = Tahun::findOrFail($tahun);
-
-        // $tagih=Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$id)->where('id_tahun',$tahun->id)->get();
-        // dd($tagih);
         return view('pelanggan.detail', [
             'title' => 'Pelanggan',
             'pelanggan' => $pelanggan,
             'getTahun' => $getTahun,
             'tahun' => $tahun,
             'tagihan' => $tagihan,
-            'tagihanJanuari' => $tagihanJanuari,
-            'tagihanFebruari' => $tagihanFebruari,
-            'tagihanMaret' => $tagihanMaret,
-            'tagihanApril' => $tagihanApril,
-            'tagihanMei' => $tagihanMei,
-            'tagihanJuni' => $tagihanJuni,
-            'tagihanJuli' => $tagihanJuli,
-            'tagihanAgustus' => $tagihanAgustus,
-            'tagihanSeptember' => $tagihanSeptember,
-            'tagihanOktober' => $tagihanOktober,
-            'tagihanNovember' => $tagihanNovember,
-            'tagihanDesember' => $tagihanDesember,
+            'chartBulan' => $chartBulan,
         ]);
     }
+
+    public function exportExcel()
+	{   
+		return Excel::download(new PelangganExport, 'pelanggan.xlsx');
+	}
+
+    public function exportExcelTagihanPelanggan($id,$tahun)
+	{   
+        $pelanggan = Pelanggan::findOrFail($id);
+        $tahun = Tahun::findOrFail($tahun);
+        // $tagihan = Tagihan::with(['pelanggan','tahun'])
+        // ->where('id', $id)                        
+        // ->where('id_tahun', $tahun)
+        // ->get();
+		return Excel::download(new TagihanPelangganExport($id,$tahun->id), 'tagihan-'.$pelanggan->nama.'-'.$tahun->tahun.'.xlsx');
+	}
 
     // public function createTagihan($id,$tahun)
     // {
@@ -221,20 +230,4 @@ class PelangganController extends Controller
     //     return redirect("/pelanggan-$id-detail-$tahun")->with('successDelete', 'Data Tagihan Berhasil dihapus!');
         
     // }
-
-    public function exportExcel()
-	{   
-		return Excel::download(new PelangganExport, 'pelanggan.xlsx');
-	}
-
-    public function exportExcelTagihanPelanggan($id,$tahun)
-	{   
-        $pelanggan = Pelanggan::findOrFail($id);
-        $getTahun = Tahun::findOrFail($tahun);
-        // $tagihan = Tagihan::with(['pelanggan','tahun'])
-        // ->where('id', $id)                        
-        // ->where('id_tahun', $tahun)
-        // ->get();
-		return Excel::download(new TagihanPelangganExport($id,$tahun), 'tagihan-'.$pelanggan->nama.'-'.$getTahun->tahun.'.xlsx');
-	}
 }

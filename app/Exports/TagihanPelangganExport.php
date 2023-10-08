@@ -32,7 +32,7 @@ class TagihanPelangganExport implements FromCollection, WithMapping, WithHeading
             'Tahun',
             'Bulan',
             'KWH',
-            'kelas Tarif',
+            'Kelas Tarif',
             'Total Tagihan'
         ];
     }
@@ -40,7 +40,12 @@ class TagihanPelangganExport implements FromCollection, WithMapping, WithHeading
     {   
         // $tahun = Tahun::findOrFail($this->id);
         // $pelanggan = Pelanggan::all();
-        return Tagihan::with(['pelanggan','tahun'])->where('id_pelanggan',$this->id)->where('id_tahun',$this->tahun)->get();
+        return Tagihan::with(['pelanggan','tahun'])
+        ->where('id_pelanggan',$this->id)
+        ->where('id_tahun',$this->tahun)
+        ->orderByraw('CHAR_LENGTH(id_bulan) ASC')
+        ->orderBy('id_bulan', 'ASC')
+        ->get();
     }
 
     public function map($tagihan):array
@@ -49,8 +54,8 @@ class TagihanPelangganExport implements FromCollection, WithMapping, WithHeading
             $tagihan->pelanggan->id_pelanggan,
             $tagihan->pelanggan->nama,
             $tagihan->tahun->tahun,
-            $tagihan->bulan,
-            $tagihan->KWH,
+            $tagihan->bulan->bulan,
+            $tagihan->kwh,
             $tagihan->kelas_tarif,
             $tagihan->total_tagihan,
         ];
