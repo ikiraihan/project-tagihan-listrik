@@ -94,7 +94,7 @@
                                             <td>{{ $t -> bulan -> bulan ?? '-'}}</td>
                                             <td>{{ $t -> kwh ?? '-' }}</td> 
                                             <td>{{ $t -> kelas_tarif ?? '-' }}</td> 
-                                            <td>{{ $t -> total_tagihan ?? '-' }}</td>      
+                                            <td>Rp. {{ number_format($t->total_tagihan, 0, ',', '.') ?? '-' }}</td>      
                                             <!-- <td>
 												<a class="btn btn-icon btn-warning btn-sm btn-active-light-primary w-30px h-30px me-3" href="/pelanggan-{{$pelanggan->id}}-detail-{{$tahun->id}}/tagihan/edit/{{$t->id}}">
                                                 Edit

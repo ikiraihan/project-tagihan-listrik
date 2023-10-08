@@ -96,6 +96,7 @@ class TagihanController extends Controller
 
     public function store(Request $request,$tahun,$bulan)
     {   
+        $total_tagihan = \Str::remove('.', $request->total_tagihan);
         $validatedData = $request->validate([
             'id_pelanggan'  => 'required',
             'id_tahun'  => 'required',
@@ -105,7 +106,16 @@ class TagihanController extends Controller
             'total_tagihan'  => 'required',
         ]);
 
-        Tagihan::create($validatedData);
+        //Tagihan::create($validatedData);
+
+        $createTagihan = Tagihan::create([
+            'id_pelanggan'  => $request->id_pelanggan,
+            'id_tahun'  => $request->id_tahun,
+            'id_bulan'  => $request->id_bulan,
+            'kwh'  => $request->kwh,
+            'kelas_tarif'  => $request->kelas_tarif,
+            'total_tagihan'  => $total_tagihan,
+        ]);
         // dd($validatedData);
 
         $request->session()->flash('success','Data Tagihan Berhasil ditambahkan!');
@@ -136,14 +146,14 @@ class TagihanController extends Controller
     public function update(Request $request,$tahun,$bulan,$tagihan)
     {
         //$tahun = Tahun::findOrFail($tahun);
-
+        $total_tagihan = \Str::remove('.', $request->total_tagihan);
         Tagihan::where('id', $tagihan)->update([
             'id_pelanggan'  => $request->id_pelanggan,
             'id_tahun'  => $request->id_tahun,
             'id_bulan'  => $request->id_bulan,
             'kwh'  => $request->kwh,
             'kelas_tarif'  => $request->kelas_tarif,
-            'total_tagihan'  => $request->total_tagihan,
+            'total_tagihan'  => $total_tagihan,
         ]);
 
         $request->session()->flash('success', 'Data Tagihan Berhasil diupdate!');
@@ -162,13 +172,15 @@ class TagihanController extends Controller
         
     }
 
-    public function exportExcel($id,$bulan)
+    public function exportExcel($tahun,$bulan)
 	{   
-        $tahun = Tahun::findOrFail($id);
+        $tahun = Tahun::where('tahun',$tahun)->first();
+        $bulan = Bulan::findOrFail($bulan);
+        //dd($bulan);
         // $tagihan = Tagihan::with(['pelanggan','tahun'])                        
         // ->where('id_tahun', $id)
         // ->where('bulan', $bulan)
         // ->get();
-		return Excel::download(new TagihanExport($id,$bulan), 'tagihan-'.$bulan.'-'.$tahun->tahun.'.xlsx');
+		return Excel::download(new TagihanExport($tahun->id,$bulan->id), 'tagihan-'.$bulan->bulan.'-'.$tahun->tahun.'.xlsx');
 	}
 }
