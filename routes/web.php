@@ -48,12 +48,12 @@ Route::get('/pelanggan-{id}-detail-{tahun}/tagihan/export', [PelangganController
 
 // Route::get('/tagihan', [TagihanController::class, 'index']);
 Route::get('/tagihan', [TagihanController::class, 'viewTahun'])->middleware(['auth']);
-Route::get('/{id}-tagihan', [TagihanController::class, 'viewBulan'])->middleware(['auth']);
-Route::get('/{id}-tagihan-{bulan}', [TagihanController::class, 'viewDataTagihan'])->middleware(['auth']);
-Route::get('/{id}-tagihan-{bulan}/export', [TagihanController::class, 'exportExcel'])->middleware(['auth']);
+Route::get('/{tahun}-tagihan', [TagihanController::class, 'viewBulan'])->middleware(['auth']);
+Route::get('/{tahun}-tagihan-{bulan}', [TagihanController::class, 'viewDataTagihan'])->middleware(['auth']);
+Route::get('/{tahun}-tagihan-{bulan}/export', [TagihanController::class, 'exportExcel'])->middleware(['auth']);
 
-Route::get('/tagihan/{id}/{bulan}/create', [TagihanController::class, 'create'])->middleware(['auth'])->name('data.tagihan');
-Route::post('/tagihan/{id}/{bulan}/store', [TagihanController::class, 'store'])->middleware(['auth']);
-Route::get('/tagihan/{id}/{bulan}/edit/{tagihan}', [TagihanController::class,'edit'])->middleware(['auth']);
-Route::post('/tagihan/{id}/{bulan}/update/{tagihan}', [TagihanController::class,'update'])->middleware(['auth']);
-Route::get('/tagihan/{id}/{bulan}/destroy/{tagihan}', [TagihanController::class,'destroy'])->middleware(['auth']);
+Route::get('/{tahun}-tagihan-{bulan}/create', [TagihanController::class, 'create'])->middleware(['auth'])->name('data.tagihan');
+Route::post('/{tahun}-tagihan-{bulan}/store', [TagihanController::class, 'store'])->middleware(['auth']);
+Route::get('/{tahun}-tagihan-{bulan}/edit/{tagihan}', [TagihanController::class,'edit'])->middleware(['auth']);
+Route::post('/{tahun}-tagihan-{bulan}/update/{tagihan}', [TagihanController::class,'update'])->middleware(['auth']);
+Route::get('/{tahun}-tagihan-{bulan}/destroy/{tagihan}', [TagihanController::class,'destroy'])->middleware(['auth']);

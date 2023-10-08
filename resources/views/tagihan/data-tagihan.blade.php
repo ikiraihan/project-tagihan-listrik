@@ -18,8 +18,8 @@
                         </div>
                     @endif
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Data Tagihan {{ $bulan }} {{ $tahun->tahun }}</h1>
-                    <a href="/{{ $tahun->id }}-tagihan">
+                    <h1 class="h3 mb-2 text-gray-800">Data Tagihan {{ $bulan->bulan }} {{ $tahun->tahun }}</h1>
+                    <a href="/{{ $tahun->tahun }}-tagihan">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                         </svg>
@@ -29,7 +29,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <a href="/tagihan/{{$tahun->id}}/{{$bulan}}/create" class="btn btn-primary"> + &nbspTambah Tagihan</a>
+                            <a href="/{{$tahun->tahun}}-tagihan-{{$bulan->id}}/create" class="btn btn-primary"> + &nbspTambah Tagihan</a>
                             <div>
                             <a class="btn btn-primary" href="/{{ $tahun->id }}-tagihan-{{ $bulan }}/export">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
@@ -52,7 +52,7 @@
                                             <th>KWH</th>
                                             <th>Kelas Tarif</th>
                                             <th>Total Tagihan</th>
-                                            <th style="width:23%">Action</th>
+                                            <th style="width:15%">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -63,17 +63,17 @@
                                             <td>{{ $t -> pelanggan -> nama ?? '-' }}</td>
                                             <!-- <td>{{ $t -> tahun -> tahun ?? '-' }}</td>
                                             <td>{{ $t -> bulan ?? '-'}}</td> -->
-                                            <td>{{ $t -> KWH ?? '-' }}</td> 
+                                            <td>{{ $t -> kwh ?? '-' }}</td> 
                                             <td>{{ $t -> kelas_tarif ?? '-' }}</td> 
                                             <td>{{ $t -> total_tagihan ?? '-' }}</td>      
                                             <td>
-                                                <a class="btn btn-icon btn-success btn-sm btn-active-light-primary w-30px h-30px me-3" href="/">
+                                                <!-- <a class="btn btn-icon btn-success btn-sm btn-active-light-primary w-30px h-30px me-3" href="/">
                                                 Detail
-                                                </a>
-												<a class="btn btn-icon btn-warning btn-sm btn-active-light-primary w-30px h-30px me-3" href="/tagihan/{{$tahun->id}}/{{$bulan}}/edit/{{$t->id}}">
+                                                </a> -->
+												<a class="btn btn-icon btn-warning btn-sm btn-active-light-primary w-30px h-30px me-3" href="/{{$tahun->tahun}}-tagihan-{{$bulan->id}}/edit/{{$t->id}}">
                                                 Edit
                                                 </a>
-												<a class="btn btn-icon btn-danger btn-sm btn-active-light-primary w-30px h-30px" href="/tagihan/{{$tahun->id}}/{{$bulan}}/destroy/{{$t->id}}" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')">
+												<a class="btn btn-icon btn-danger btn-sm btn-active-light-primary w-30px h-30px" href="/{{$tahun->tahun}}-tagihan-{{$bulan->id}}/destroy/{{$t->id}}" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')">
                                                 Hapus
                                                 </a>
 											</td>                               

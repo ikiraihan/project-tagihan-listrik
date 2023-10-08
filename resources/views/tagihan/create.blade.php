@@ -9,7 +9,7 @@
 
     <main>
         <div class="container">
-            <a href="/{{$tahun->id}}-tagihan-{{$bulan}}">
+            <a href="/{{$tahun->tahun}}-tagihan-{{$bulan->id}}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
                 </svg>
@@ -22,12 +22,8 @@
                             <h1 class="h3 mt-2 mb-2 text-gray-800">Tambah Tagihan</h1>
                         </div>
 						<div class="card-body">
-                            <form action="/tagihan/{{$tahun->id}}/{{$bulan}}/store" method="post">
+                            <form action="/{{$tahun->tahun}}-tagihan-{{$bulan->id}}/store" method="post">
                                 {{ csrf_field() }}
-                                <!-- <div class="form-group">
-                                    <label for="id_tahun">Tahun</label>
-                                    <input type="text" class="form-control" id="id_tahun" name="id_tahun" value="{{ $tahun-> id }}" readonly>
-                                </div> -->
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Tahun</label>
                                     <select class="form-control" id="id_tahun" name="id_tahun" readonly>
@@ -35,8 +31,10 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="bulan">Bulan</label>
-                                    <input type="text" class="form-control" id="bulan" name="bulan" value="{{ $bulan }}" readonly>
+                                    <label for="exampleFormControlSelect1">Bulan</label>
+                                    <select class="form-control" id="id_bulan" name="id_bulan" readonly>
+                                        <option value="{{ $bulan-> id }}"> {{ $bulan->bulan }}</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Pilih Pelanggan</label><br>

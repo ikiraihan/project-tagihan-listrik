@@ -12,16 +12,6 @@ use Illuminate\Http\Request;
 
 class TagihanController extends Controller
 {
-    public function indexxx(){
-
-        // $tagihan = Tagihan::all();
-        $tagihan = Tagihan::with(['pelanggan','tahun'])->get();
-
-        return view('tagihan.index', [
-            'title' => 'Tagihan',
-            'tagihan' => $tagihan
-        ]);
-    }
 
     public function viewTahun(){
 
@@ -34,27 +24,34 @@ class TagihanController extends Controller
         ]);
     }
 
-    public function viewBulan($id){
+    public function viewBulan($tahun){
 
-        $tahun = Tahun::findOrFail($id);
+        //$tahun = Tahun::findOrFail($tahun);
+        $getBulan=Bulan::all();
+        $tahun = Tahun::where('tahun',$tahun)->first();
+        //dd($tahun);
+        
         // $bulan = Bulan::findOrFail($id);
         $tagihan = Tagihan::all();
 
         return view('tagihan.bulan', [
             'title' => 'Tahun Tagihan',
             'tahun' => $tahun,
-            'tagihan' => $tagihan
+            'tagihan' => $tagihan,
+            'getBulan' => $getBulan,
         ]);
     }
 
-    public function viewDataTagihan($id,$bulan){
+    public function viewDataTagihan($tahun,$bulan){
 
-        $tahun = Tahun::findOrFail($id);
-        // $bulan = Bulan::findOrFail($id);
-        $tagihan = Tagihan::with(['pelanggan','tahun'])
-                        ->where('id_tahun', $id)
-                        ->where('bulan', $bulan)
+        $tahun = Tahun::where('tahun',$tahun)->first();
+        $bulan = Bulan::findOrFail($bulan);
+
+        $tagihan = Tagihan::with(['pelanggan','tahun','bulan'])
+                        ->where('id_tahun', $tahun->id)
+                        ->where('id_bulan', $bulan->id)
                         ->get();
+        //dd($bulan->id);
 
         return view('tagihan.data-tagihan', [
             'title' => 'Tahun Tagihan',
@@ -78,14 +75,14 @@ class TagihanController extends Controller
         // return redirect('/tagihan/tahun');
     }
 
-    public function create($id,$bulan)
+    public function create($tahun,$bulan)
     {
-        $tahun = Tahun::findOrFail($id);
+        $tahun = Tahun::where('tahun',$tahun)->first();
         $pelanggan = Pelanggan::all();
-        // $bulan = Bulan::findOrFail($id);
+        $bulan = Bulan::findOrFail($bulan);
         $tagihan = Tagihan::with(['pelanggan','tahun'])
-                        ->where('id_tahun', $id)
-                        ->where('bulan', $bulan)
+                        ->where('id_tahun', $tahun->id)
+                        ->where('id_bulan', $bulan->id)
                         ->get();
 
         return view('tagihan.create', [
@@ -97,14 +94,12 @@ class TagihanController extends Controller
         ]);
     }
 
-    public function store(Request $request,$id,$bulan)
+    public function store(Request $request,$tahun,$bulan)
     {   
-        $tahun = Tahun::findOrFail($id);
-
         $validatedData = $request->validate([
             'id_pelanggan'  => 'required',
             'id_tahun'  => 'required',
-            'bulan'  => 'required',
+            'id_bulan'  => 'required',
             'kwh'  => 'required',
             'kelas_tarif'  => 'required',
             'total_tagihan'  => 'required',
@@ -115,14 +110,14 @@ class TagihanController extends Controller
 
         $request->session()->flash('success','Data Tagihan Berhasil ditambahkan!');
 
-        return redirect("/$tahun->id-tagihan-$bulan");
+        return redirect("/$tahun-tagihan-$bulan");
     }
 
-    public function edit($id,$bulan,$tagihan)
+    public function edit($tahun,$bulan,$tagihan)
     {
-        $tahun = Tahun::findOrFail($id);
+        $tahun = Tahun::where('tahun',$tahun)->first();
         $pelanggan = Pelanggan::all();
-        // $bulan = Bulan::findOrFail($id);
+        $bulan = Bulan::findOrFail($bulan);
         // $tagihan = Tagihan::with(['pelanggan','tahun'])
         //                 ->where('id_tahun', $id)
         //                 ->where('bulan', $bulan)
@@ -138,14 +133,14 @@ class TagihanController extends Controller
         ]);
     }
 
-    public function update(Request $request,$id,$bulan,$tagihan)
+    public function update(Request $request,$tahun,$bulan,$tagihan)
     {
-        $tahun = Tahun::findOrFail($id);
+        //$tahun = Tahun::findOrFail($tahun);
 
         Tagihan::where('id', $tagihan)->update([
             'id_pelanggan'  => $request->id_pelanggan,
             'id_tahun'  => $request->id_tahun,
-            'bulan'  => $request->bulan,
+            'id_bulan'  => $request->id_bulan,
             'kwh'  => $request->kwh,
             'kelas_tarif'  => $request->kelas_tarif,
             'total_tagihan'  => $request->total_tagihan,
@@ -153,14 +148,17 @@ class TagihanController extends Controller
 
         $request->session()->flash('success', 'Data Tagihan Berhasil diupdate!');
 
-        return redirect("/$tahun->id-tagihan-$bulan");
+        return redirect("/$tahun-tagihan-$bulan");
     }
 
-    public function destroy($id,$bulan,$tagihan)
-    {
+    public function destroy($tahun,$bulan,$tagihan)
+    {   
+        // $tahun = Tahun::where('tahun',$tahun)->first();
+        // $bulan = Bulan::findOrFail($bulan);
+
         Tagihan::destroy($tagihan);
 		
-        return redirect("/$id-tagihan-$bulan")->with('successDelete', 'Data Tagihan Berhasil dihapus!');
+        return redirect("/$tahun-tagihan-$bulan")->with('successDelete', 'Data Tagihan Berhasil dihapus!');
         
     }
 
