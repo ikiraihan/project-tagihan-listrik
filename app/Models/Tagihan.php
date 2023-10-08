@@ -13,7 +13,7 @@ class Tagihan extends Model
     protected $fillable = [
         'id_pelanggan',
         'id_tahun',
-        'bulan',
+        'id_bulan',
         'kwh',
         'kelas_tarif',
         'total_tagihan',
@@ -27,5 +27,10 @@ class Tagihan extends Model
     public function tahun()
     {
         return $this->belongsTo(Tahun::class, 'id_tahun', 'id');
+    }
+
+    public function bulan()
+    {
+        return $this->belongsTo(Bulan::class, 'id_bulan', 'id');
     }
 }

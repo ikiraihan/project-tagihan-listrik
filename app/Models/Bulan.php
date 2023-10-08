@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tahun extends Model
+class Bulan extends Model
 {
     use HasFactory;
-    protected $table = 'tahun';
+    protected $table = 'bulan';
 
     protected $fillable = [
-        'tahun',
+        'bulan',
     ];
 
     public function tagihans()
     {
-	return $this->hasMany(Tagihan::class,'id','id_tahun');
+	return $this->hasMany(Tagihan::class,'id','id_bulan');
     }
 }
