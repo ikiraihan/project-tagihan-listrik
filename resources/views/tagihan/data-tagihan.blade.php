@@ -17,6 +17,14 @@
                         </button>
                         </div>
                     @endif
+                    @if (session()->has('error'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ session('error') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> 
+                                <span aria-hidden="true">&times;</span> 
+                            </button>
+                        </div>
+                    @endif
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Data Tagihan {{ $bulan->bulan }} {{ $tahun->tahun }}</h1>
                     <a href="/{{ $tahun->tahun }}-tagihan">
