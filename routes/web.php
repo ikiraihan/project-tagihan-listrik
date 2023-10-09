@@ -48,6 +48,8 @@ Route::get('/pelanggan-{id}-detail-{tahun}/tagihan/export', [PelangganController
 
 // Route::get('/tagihan', [TagihanController::class, 'index']);
 Route::get('/tagihan', [TagihanController::class, 'viewTahun'])->middleware(['auth']);
+Route::get('/tagihan/create/tahun', [TagihanController::class, 'createTahun'])->middleware(['auth']);
+Route::post('/tagihan/store/tahun', [TagihanController::class, 'storeTahun'])->middleware(['auth']);
 Route::get('/{tahun}-tagihan', [TagihanController::class, 'viewBulan'])->middleware(['auth']);
 Route::get('/{tahun}-tagihan-{bulan}', [TagihanController::class, 'viewDataTagihan'])->middleware(['auth']);
 Route::get('/{tahun}-tagihan-{bulan}/export', [TagihanController::class, 'exportExcel'])->middleware(['auth']);

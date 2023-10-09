@@ -61,6 +61,16 @@ class TagihanController extends Controller
         ]);
     }
 
+    public function createTahun(){
+
+        //$tahun = Tahun::all();
+        //$tagihan = Tagihan::with(['pelanggan','tahun'])->get();
+
+        return view('tagihan.create-tahun', [
+            'title' => 'Create Tahun Tagihan',
+        ]);
+    }
+
     public function storeTahun(Request $request)
     {   
         
@@ -72,7 +82,7 @@ class TagihanController extends Controller
 
         $request->session()->flash('success','Data Tahun Berhasil ditambahkan!');
 
-        //return redirect('/tagihan');
+        return redirect('/tagihan');
     }
 
     public function create($tahun,$bulan)

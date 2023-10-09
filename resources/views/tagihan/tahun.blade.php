@@ -23,7 +23,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">+ &nbspTambah Tahun</button>
+                        <a href="/tagihan/create/tahun" class="btn btn-primary"> + &nbspTambah Tahun</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -54,7 +54,5 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <!-- /.container-fluid -->
 @endsection
