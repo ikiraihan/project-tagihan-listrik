@@ -121,7 +121,7 @@
                             <br>
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-grey-800">Grafik Tagihan Pelanggan 5 Tahun Terakhir {{ ($tahun->tahun)-4 }} - {{$tahun->tahun}}</h6>
+                                    <h6 class="m-0 font-weight-bold text-grey-800">Grafik Tagihan Pelanggan 5 Tahun Terakhir {{ ($tahun->tahun)-5 }} - {{$tahun->tahun}}</h6>
                                 </div>
                                 <div class="card-body">
                                 <canvas id="chartLima" height="100px"></canvas>
@@ -143,7 +143,7 @@
       const data = {
         datasets: [
                 {
-                    label: 'Tagihan 1 Tahun',
+                    label: 'Tagihan',
                     data: tagihan,
                     borderColor: ['rgba(255, 99, 132, 1)'],
                     backgroundColor: ['rgba(255, 99, 132, 1)'],
@@ -171,7 +171,7 @@
         const data_2 = {
         datasets: [
                 {
-                    label: 'Tagihan 5 Tahun Terakhir',
+                    label: 'Tagihan',
                     data: chartLimaTahun,
                     borderColor: ['rgba(0,120,255, 1)'],
                     backgroundColor: ['rgba(0,120,255, 1)'],

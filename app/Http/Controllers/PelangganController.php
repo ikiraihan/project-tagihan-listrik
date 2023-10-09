@@ -109,11 +109,11 @@ class PelangganController extends Controller
 
         }
 
-        $getYear = ($tahun->tahun)-4;
+        $getYear = ($tahun->tahun)-5;
         //dd($yearNow);
 
         //untuk chart 5 tahun
-        for ($k = 1; $k <= 5; $k++) {
+        for ($k = 1; $k <= 6; $k++) {
 
             $valTahun= Tahun::where('tahun',$getYear)->value('id');
             $tambahTotalTagihan=0;
