@@ -118,6 +118,15 @@
                                 <canvas id="myChart" height="100px"></canvas>
                                 </div>
                             </div>
+                            <br>
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-grey-800">Grafik Tagihan Pelanggan 5 Tahun Terakhir {{ ($tahun->tahun)-4 }} - {{$tahun->tahun}}</h6>
+                                </div>
+                                <div class="card-body">
+                                <canvas id="chartLima" height="100px"></canvas>
+                                </div>
+                            </div>
                         </div>
                         </div>
                     </div>
@@ -132,10 +141,9 @@
       const tagihan = {!! json_encode($chartBulan) !!};
 
       const data = {
-        // labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni','Juli','Agustus','September','Oktober','November','Desember'],
         datasets: [
                 {
-                    label: 'Tagihan',
+                    label: 'Tagihan 1 Tahun',
                     data: tagihan,
                     borderColor: ['rgba(255, 99, 132, 1)'],
                     backgroundColor: ['rgba(255, 99, 132, 1)'],
@@ -155,6 +163,34 @@
         document.getElementById('myChart'),
         config
       );
+
+
+
+        const chartLimaTahun = {!! json_encode($chartLimaTahun) !!};
+
+        const data_2 = {
+        datasets: [
+                {
+                    label: 'Tagihan 5 Tahun Terakhir',
+                    data: chartLimaTahun,
+                    borderColor: ['rgba(0,120,255, 1)'],
+                    backgroundColor: ['rgba(0,120,255, 1)'],
+                    fill: false,
+                    pointRadius:7,
+                },
+        ]
+        };
+
+        const config_2 = {
+        type: 'line',
+        data: data_2,
+        options: {}
+        };
+
+        const chartLima = new Chart(
+        document.getElementById('chartLima'),
+        config_2
+        );
 </script>
 
 @endsection

@@ -86,12 +86,12 @@ class PelangganController extends Controller
 
     public function detail($id,$tahun)
     {   
-
         $pelanggan = Pelanggan::findOrFail($id);
         $getTahun = Tahun::orderBy('tahun')->get();
 
         $tahun = Tahun::where('tahun',$tahun)->first();
         
+        //untuk chart bulan
         for ($i = 1; $i <= 12; $i++) {
 
             $labelBulan=Bulan::where('id',$i)
@@ -108,7 +108,45 @@ class PelangganController extends Controller
             }
 
         }
+
+        $getYear = ($tahun->tahun)-4;
+        //dd($yearNow);
+
+        //untuk chart 5 tahun
+        for ($k = 1; $k <= 5; $k++) {
+
+            $valTahun= Tahun::where('tahun',$getYear)->value('id');
+            $tambahTotalTagihan=0;
+
+            //dd($valTahun);
+            for ($j = 1; $j <= 12; $j++) {
+    
+                $totalTagihan=Tagihan::with(['pelanggan','tahun','bulan'])
+                ->where('id_pelanggan',$id)
+                ->where('id_tahun',$valTahun)
+                ->where('id_bulan', $j)
+                ->value('total_tagihan');
+                
+                if($totalTagihan==null){
+                    $totalTagihan='0';
+                }
+
+                $tambahTotalTagihan=$tambahTotalTagihan+$totalTagihan;
+    
+            }
+
+            $chartLimaTahun[$getYear]=$tambahTotalTagihan;
+            
+            if($chartLimaTahun[$getYear]==null){
+                $chartLimaTahun[$getYear]='0';
+            }
+
+            $getYear=$getYear+1;
+            //dd($getYear);
+
+        }
         //dd($chartBulan);
+        //dd($chartLimaTahun);
 
         $tagihan = Tagihan::with(['pelanggan','tahun'])
         ->where('id_pelanggan',$id)
@@ -124,6 +162,7 @@ class PelangganController extends Controller
             'tahun' => $tahun,
             'tagihan' => $tagihan,
             'chartBulan' => $chartBulan,
+            'chartLimaTahun' => $chartLimaTahun
         ]);
     }
 
