@@ -109,11 +109,11 @@ class PelangganController extends Controller
 
         }
 
-        $getYear = ($tahun->tahun)-5;
+        $getYear = ($tahun->tahun)-4;
         //dd($yearNow);
 
         //untuk chart 5 tahun
-        for ($k = 1; $k <= 6; $k++) {
+        for ($k = 1; $k <= 5; $k++) {
 
             $valTahun= Tahun::where('tahun',$getYear)->value('id');
             $tambahTotalTagihan=0;
@@ -151,7 +151,7 @@ class PelangganController extends Controller
         $tagihan = Tagihan::with(['pelanggan','tahun'])
         ->where('id_pelanggan',$id)
         ->where('id_tahun',$tahun->id)
-        ->orderByraw('CHAR_LENGTH(id_bulan) ASC')
+        ->orderByraw('LEN(id_bulan) ASC')
         ->orderBy('id_bulan', 'ASC')
         ->get();
 
