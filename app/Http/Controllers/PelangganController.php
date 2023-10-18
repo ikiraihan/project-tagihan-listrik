@@ -180,7 +180,7 @@ class PelangganController extends Controller
         // ->where('id', $id)                        
         // ->where('id_tahun', $tahun)
         // ->get();
-		return Excel::download(new TagihanPelangganExport($id,$tahun->id), 'tagihan-'.$pelanggan->nama.'-'.$tahun->tahun.'.xlsx');
+		return Excel::download(new TagihanPelangganExport($id,$tahun->id), 'Tagihan-'.$pelanggan->nama.'-'.$tahun->tahun.'.xlsx');
 	}
 
     // public function createTagihan($id,$tahun)

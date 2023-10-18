@@ -208,6 +208,22 @@ class TagihanController extends Controller
         
     }
 
+    public function destroyTahun($id)
+    {   
+        $getTahun = Tahun::where('id',$id)->first();
+
+        $tagihan=Tagihan::where('id_tahun',$id)
+        ->count();
+
+        if($tagihan==0){
+        Tahun::destroy($id);
+		
+        return redirect("/tagihan")->with('success', 'Tahun Berhasil dihapus!');
+        }else{
+            return redirect("/tagihan")->with('error', 'Gagal menghapus data! Terdapat data tagihan yang tercatat pada tahun '.$getTahun->tahun.'!');
+        }
+    }
+
     public function exportExcel($tahun,$bulan)
 	{   
         $tahun = Tahun::where('tahun',$tahun)->first();
@@ -217,6 +233,6 @@ class TagihanController extends Controller
         // ->where('id_tahun', $id)
         // ->where('bulan', $bulan)
         // ->get();
-		return Excel::download(new TagihanExport($tahun->id,$bulan->id), 'tagihan-'.$bulan->bulan.'-'.$tahun->tahun.'.xlsx');
+		return Excel::download(new TagihanExport($tahun->id,$bulan->id), 'Tagihan-'.$bulan->bulan.'-'.$tahun->tahun.'.xlsx');
 	}
 }
