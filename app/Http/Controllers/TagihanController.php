@@ -35,7 +35,7 @@ class TagihanController extends Controller
         $tagihan = Tagihan::all();
 
         return view('tagihan.bulan', [
-            'title' => 'Tahun Tagihan',
+            'title' => 'Bulan Tagihan',
             'tahun' => $tahun,
             'tagihan' => $tagihan,
             'getBulan' => $getBulan,
@@ -54,7 +54,7 @@ class TagihanController extends Controller
         //dd($bulan->id);
 
         return view('tagihan.data-tagihan', [
-            'title' => 'Tahun Tagihan',
+            'title' => 'Data Tagihan',
             'tahun' => $tahun,
             'bulan' => $bulan,
             'tagihan' => $tagihan
@@ -67,7 +67,7 @@ class TagihanController extends Controller
         //$tagihan = Tagihan::with(['pelanggan','tahun'])->get();
 
         return view('tagihan.create-tahun', [
-            'title' => 'Create Tahun Tagihan',
+            'title' => 'Tambah Tahun Tagihan',
         ]);
     }
 
@@ -107,7 +107,9 @@ class TagihanController extends Controller
     public function store(Request $request,$tahun,$bulan)
     {   
         $tahun = Tahun::where('tahun',$tahun)->first();
+        $bulan = Bulan::where('id',$bulan)->first();
         $total_tagihan = \Str::remove('.', $request->total_tagihan);
+        $getPelanggan=Pelanggan::where('id',$request->id_pelanggan)->first();
 
         $validatedData = $request->validate([
             'id_pelanggan'  => 'required',
@@ -145,11 +147,12 @@ class TagihanController extends Controller
 
         $request->session()->flash('success','Data Tagihan Berhasil ditambahkan!');
 
-        return redirect("/$tahun->tahun-tagihan-$bulan");
+        return redirect("/$tahun->tahun-tagihan-$bulan->bulan");
         }else{
-            $request->session()->flash('error','Gagal Memasukkan Data, Pelanggan Sudah memiliki Data pada Tahun dan Bulan ini!');
+            //
+            $request->session()->flash('error','Gagal menambahkan data! ID pelanggan '.$getPelanggan->id_pelanggan.' sudah memiliki data tagihan pada Tahun '.$tahun->tahun.' Bulan '.$bulan->bulan.'');
 
-            return redirect("/$tahun->tahun-tagihan-$bulan");
+            return redirect("/$tahun->tahun-tagihan-$bulan->id/create");
         }
     }
 
@@ -177,45 +180,9 @@ class TagihanController extends Controller
     {
         //$tahun = Tahun::findOrFail($tahun);
         $tahun = Tahun::where('tahun',$tahun)->first();
-        $getIdPelanggan = Tagihan::with(['pelanggan','tahun'])                        
-        ->where('id', $tagihan)
-        ->value('id_pelanggan');
-        //dd($getIdPelanggan);
-        $getPelanggan=Pelanggan::where('id',$getIdPelanggan)->first();
 
         $total_tagihan = \Str::remove('.', $request->total_tagihan);
 
-        $getBulan=Tagihan::where('id_pelanggan',$request->id_pelanggan)
-        ->where('id_tahun',$tahun->id)
-        //->value('id_bulan')
-        ->get();
-        //dd($request->id_pelanggan);
-        $hitung=0;
-
-            // if($getPelanggan->nama==$request->nama){
-            //     foreach($getBulan as $gb){
-            //         if($gb->id_bulan==$request->id_bulan){
-            //             $hitung=0;
-            //         }
-            //     }
-            // }elseif($getPelanggan->nama=!$request->nama){
-            //     foreach($getBulan as $gb){
-            //         if($gb->id_bulan==$request->id_bulan){
-            //             $hitung=1;
-            //         }
-            //     }
-            // }
-
-            if($getPelanggan->id!=$request->id_pelanggan){
-                    foreach($getBulan as $gb){
-                        if($gb->id_bulan==$request->id_bulan){
-                            $hitung=1;
-                        }
-                    }
-                }
-            //dd($hitung);
-
-        if($hitung==0){
         Tagihan::where('id', $tagihan)->update([
             'id_pelanggan'  => $request->id_pelanggan,
             'id_tahun'  => $request->id_tahun,
@@ -228,11 +195,6 @@ class TagihanController extends Controller
         $request->session()->flash('success', 'Data Tagihan Berhasil diupdate!');
 
         return redirect("/$tahun->tahun-tagihan-$bulan");
-        }else{
-            $request->session()->flash('error','Gagal Mengubah Data, Pelanggan yang Anda Input Sudah memiliki Data pada Tahun dan Bulan ini!');
-
-            return redirect("/$tahun->tahun-tagihan-$bulan/edit/$tagihan");
-        }
     }
 
     public function destroy($tahun,$bulan,$tagihan)

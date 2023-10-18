@@ -34,37 +34,42 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/pelanggan">
+                <div class="sidebar-brand-icon">
+                    <span>ADMIN</span>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <!-- <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div> -->
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
+            @if($title=='Pelanggan'|$title=='Tambah Pelanggan'|$title=='Edit Pelanggan'|$title=='Detail Pelanggan')
             <!-- Nav Item - Tables -->
             <li class="nav-item active">
                 <a class="nav-link" href="/pelanggan">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Pelanggan</span></a>
             </li>
-
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="/tagihan">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Tagihan</span></a>
+                <span>Tagihan</span></a>
             </li>
-
+            @else
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="/pelanggan">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Pelanggan</span></a>
+            </li>
+            <!-- Nav Item - Tables -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/tagihan">
+                    <i class="fas fa-fw fa-table"></i>
+                <span>Tagihan</span></a>
+            </li>
+            @endif
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -99,9 +104,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{auth()->user()->name}}</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <span class="mr-2 d-none d-lg-inline text-gray-800 small">{{auth()->user()->email}}</span>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

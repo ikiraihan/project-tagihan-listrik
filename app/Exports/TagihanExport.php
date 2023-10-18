@@ -49,13 +49,13 @@ class TagihanExport implements FromCollection, WithMapping, WithHeadings, WithEv
     public function map($tagihan):array
     {
         return[
-            $tagihan->pelanggan->id_pelanggan,
-            $tagihan->pelanggan->nama,
-            $tagihan->tahun->tahun,
-            $tagihan->bulan->bulan,
-            $tagihan->kwh,
-            $tagihan->kelas_tarif,
-            $tagihan->total_tagihan,
+            $tagihan->pelanggan->id_pelanggan ?? '',
+            $tagihan->pelanggan->nama ?? '',
+            $tagihan->tahun->tahun ?? '',
+            $tagihan->bulan->bulan ?? '',
+            $tagihan->kwh ?? '',
+            $tagihan->kelas_tarif ?? '',
+            $tagihan->total_tagihan ?? '',
             //number_format($tagihan->total_tagihan, 0, ',', '.'),
         ];
     }

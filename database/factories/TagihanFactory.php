@@ -18,7 +18,7 @@ class TagihanFactory extends Factory
     {
         return [
             'id_pelanggan' => $this->faker->numberBetween(0, 300),
-            'id_tahun' => $this->faker->randomElement(['1', '2', '3', '4','5']),
+            'id_tahun' => $this->faker->randomElement(['1', '2', '3', '4','5','6','7','8','9','10']),
             'id_bulan' => $this->faker->randomElement(['1', '2', '3', '4', '5','6','7','8','9','10','11','12']),
             'KWH' => $this->faker->randomElement(['900', '1300', '450', '2000', '4000']),
             'kelas_tarif' => $this->faker->randomElement(['a', 'b', 'c', 'd', 'e']),

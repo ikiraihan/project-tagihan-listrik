@@ -16,11 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {   
-        // Pelanggan::factory(2000)->create();
-        //Tagihan::factory(1000)->create();
+        //Pelanggan::factory(2000)->create();
+        //Tagihan::factory(200000)->create();
         $this->call(TahunSeeder::class);
         $this->call(BulanSeeder::class);
-        $this->call(UserSeeder::class);
+        // $this->call(UserSeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

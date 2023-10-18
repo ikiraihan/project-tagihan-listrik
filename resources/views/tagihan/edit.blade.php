@@ -2,10 +2,10 @@
 
 @section('content')
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     
     <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css"><div id="layout_content">
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css"><div id="layout_content"> -->
 
     <main>
         <div class="container">
@@ -49,18 +49,10 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Pilih Pelanggan</label><br>
-                                    <select class="selectpicker" id="id_pelanggan" name="id_pelanggan"  data-live-search="true" showSubtext="true" data-width="100%">
-                                        <option value="{{ $tagihan->id_pelanggan }}">{{ $tagihan-> pelanggan -> id_pelanggan }} / {{ $tagihan -> pelanggan -> nama }}</option>
-                                        @foreach ($pelanggan as $p)
-                                        <option value="{{ $p->id }}"> {{ $p->id_pelanggan }} / {{ $p->nama }}</option>
-                                        @endforeach
+                                    <label for="exampleFormControlSelect1">Bulan</label>
+                                    <select class="form-control" id="id_pelanggan" name="id_pelanggan" readonly>
+                                    <option value="{{ $tagihan->id_pelanggan }}">{{ $tagihan-> pelanggan -> id_pelanggan }} / {{ $tagihan -> pelanggan -> nama }}</option>
                                     </select>
-                                    @error('id_pelanggan')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="kwh">KWH</label>

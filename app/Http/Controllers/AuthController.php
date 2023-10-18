@@ -30,7 +30,7 @@ class AuthController extends Controller
         }
     
         $request->validate([
-            'password' => 'required|min:8',
+            'password' => 'required',
         ]);
     
         if (Auth::attempt(['email' => $user->email, 'password' => $request->password]) ||
@@ -48,7 +48,7 @@ class AuthController extends Controller
             'name'          => 'required|min:3|max:50',
             'email'         => 'required|unique:users',
             'username'      => 'required|unique:users',
-            'password'      => 'required||min:8|max:32'
+            'password'      => 'required'
         ]);
 
         $validatedData['password'] = bcrypt($validatedData['password']);

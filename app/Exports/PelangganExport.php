@@ -34,10 +34,10 @@ class PelangganExport implements FromCollection, WithMapping, WithHeadings, With
     public function map($pelanggan):array
     {
         return[
-            $pelanggan->id_pelanggan,
-            $pelanggan->nama,
-            $pelanggan->alamat,
-            $pelanggan->daya,
+            $pelanggan->id_pelanggan ?? '',
+            $pelanggan->nama ?? '',
+            $pelanggan->alamat ?? '',
+            $pelanggan->daya ?? '',
         ];
     }
 

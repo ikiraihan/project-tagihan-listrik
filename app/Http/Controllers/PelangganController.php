@@ -17,6 +17,7 @@ class PelangganController extends Controller
 
         $pelanggan = Pelanggan::all();
         $yearNow = date('Y');
+        ini_set('memory_limit', '1024M');
         
         return view('pelanggan.index', [
             'title' => 'Pelanggan',
@@ -151,12 +152,12 @@ class PelangganController extends Controller
         $tagihan = Tagihan::with(['pelanggan','tahun'])
         ->where('id_pelanggan',$id)
         ->where('id_tahun',$tahun->id)
-        ->orderByraw('LEN(id_bulan) ASC')
+        ->orderByraw('CHAR_LENGTH(id_bulan) ASC')
         ->orderBy('id_bulan', 'ASC')
         ->get();
 
         return view('pelanggan.detail', [
-            'title' => 'Pelanggan',
+            'title' => 'Detail Pelanggan',
             'pelanggan' => $pelanggan,
             'getTahun' => $getTahun,
             'tahun' => $tahun,
