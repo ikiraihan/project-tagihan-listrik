@@ -61,7 +61,7 @@
 												<a class="btn btn-icon btn-warning btn-sm btn-active-light-primary w-30px h-30px me-3" href="/pelanggan/edit/{{ $p->id }}">
                                                 Edit
                                                 </a>
-												<a class="btn btn-icon btn-danger btn-sm btn-active-light-primary w-30px h-30px" href="/pelanggan/destroy/{{ $p->id }}" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data?')">
+												<a class="btn btn-icon btn-danger btn-sm btn-active-light-primary w-30px h-30px" href="/pelanggan/destroy/{{ $p->id }}" onclick="return confirm('yakin menghapus data ini? seluruh data tagihan pelanggan dengan ID Pelanggan {{ $p->id_pelanggan }} akan terhapus!')">
                                                 Hapus
                                                 </a>
 											</td>                               

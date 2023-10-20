@@ -80,6 +80,7 @@ class PelangganController extends Controller
     public function destroy($id)
     {
         Pelanggan::destroy($id);
+        Tagihan::where('id_pelanggan',$id)->delete();
 		
         return redirect('/pelanggan')->with('successDelete', 'Data Pelanggan Berhasil dihapus!');
         
