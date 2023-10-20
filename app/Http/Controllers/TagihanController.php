@@ -199,12 +199,12 @@ class TagihanController extends Controller
 
     public function destroy($tahun,$bulan,$tagihan)
     {   
-        // $tahun = Tahun::where('tahun',$tahun)->first();
+        $tahun = Tahun::where('tahun',$tahun)->first();
         // $bulan = Bulan::findOrFail($bulan);
 
         Tagihan::destroy($tagihan);
 		
-        return redirect("/$tahun->id-tagihan-$bulan")->with('successDelete', 'Data Tagihan Berhasil dihapus!');
+        return redirect("/$tahun->tahun-tagihan-$bulan")->with('successDelete', 'Data Tagihan Berhasil dihapus!');
         
     }
 
