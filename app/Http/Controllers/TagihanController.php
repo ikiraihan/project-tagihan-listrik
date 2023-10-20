@@ -147,7 +147,7 @@ class TagihanController extends Controller
 
         $request->session()->flash('success','Data Tagihan Berhasil ditambahkan!');
 
-        return redirect("/$tahun->tahun-tagihan-$bulan->bulan");
+        return redirect("/$tahun->tahun-tagihan-$bulan->id");
         }else{
             //
             $request->session()->flash('error','Gagal menambahkan data! ID pelanggan '.$getPelanggan->id_pelanggan.' sudah memiliki data tagihan pada Tahun '.$tahun->tahun.' Bulan '.$bulan->bulan.'');
