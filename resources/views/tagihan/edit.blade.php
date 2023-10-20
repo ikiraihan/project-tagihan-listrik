@@ -51,7 +51,7 @@
                                 <div class="form-group">
                                     <label for="exampleFormControlSelect1">Bulan</label>
                                     <select class="form-control" id="id_pelanggan" name="id_pelanggan" readonly>
-                                    <option value="{{ $tagihan->id_pelanggan }}">{{ $tagihan-> pelanggan -> id_pelanggan }} / {{ $tagihan -> pelanggan -> nama }}</option>
+                                    <option value="{{ $tagihan->id_pelanggan }}">{{ $tagihan-> pelanggan -> id_pelanggan }} - {{ $tagihan -> pelanggan -> nama }}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">

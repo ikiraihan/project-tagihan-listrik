@@ -49,7 +49,7 @@
                                     <select class="selectpicker" id="id_pelanggan" name="id_pelanggan" data-live-search="true" showSubtext="true" data-width="100%" required>
                                         <option value="">Pilih ID dan Nama Pelanggan (Wajib Diisi)</option>
                                         @foreach ($pelanggan as $p)
-                                        <option value="{{ $p->id }}"> {{ $p->id_pelanggan }} / {{ $p->nama }}</option>
+                                        <option value="{{ $p->id }}"> {{ $p->id_pelanggan }} - {{ $p->nama }}</option>
                                         @endforeach
                                     </select>
                                     @error('id_pelanggan')
